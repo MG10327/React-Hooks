@@ -4,13 +4,14 @@
 import * as React from 'react'
 
 function Greeting({initialName = ''}) {
-  // 🐨 initialize the state to the value from localStorage
-  // 💰 window.localStorage.getItem('name') ?? initialName
-  const [name, setName] = React.useState(initialName)
+  window.localStorage.getItem('name')
+  console.log(window.localStorage.getItem('name'))
 
-  // 🐨 Here's where you'll use `React.useEffect`.
-  // The callback should set the `name` in localStorage.
-  // 💰 window.localStorage.setItem('name', name)
+  const [name, setName] = React.useState(window.localStorage.getItem('name') ?? initialName) // Grab the name value and if there isn't one then grab what the initial name value was
+
+React.useEffect (() => {
+ window.localStorage.setItem('name', name) // key on the left, value on the right. This creates an object in the local storage.
+}, [name])
 
   function handleChange(event) {
     setName(event.target.value)
