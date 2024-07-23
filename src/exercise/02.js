@@ -11,7 +11,7 @@ function Greeting({initialName = ''}) {
 
 React.useEffect (() => {
  window.localStorage.setItem('name', name) // key on the left, value on the right. This creates an object in the local storage.
-})
+}, [name])
 
   function handleChange(event) {
     setName(event.target.value)
